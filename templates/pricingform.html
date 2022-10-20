@@ -1,0 +1,76 @@
+{% extends "basecopy.html" %}
+
+    {% block content %}
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title wow fadeInDown">Place Order!</h2>
+                            </div>
+                            <form method="POST" class="post-form">
+
+                                {% if pricing.title %}
+                                <div class="form-group mb-4">
+                                    <label for="password">Your title</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="{{ pricing.title }}" class="form-control" disabled>
+                                    </div>  
+                                </div>
+                                {% endif %}
+
+                                {% if pricing.name %}
+                                <div class="form-group mb-4">
+                                    <label for="password">Your Name</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="{{ pricing.name }}" class="form-control" disabled>
+                                    </div>  
+                                </div>
+                                {% endif %}
+
+                                {% if pricing.item_amount %}
+                                <div class="form-group mb-4">
+                                    <label for="password">Your amount</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="{{ pricing.item_amount }}" class="form-control" disabled>
+                                    </div>  
+                                </div>
+                                {% endif %}
+
+                                {% if pricing.item_quantity %}
+                                <div class="form-group mb-4">
+                                    <label for="password">Your Quantity</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="{{ pricing.item_quantity }}" class="form-control" disabled>
+                                    </div>  
+                                </div>
+                                {% endif %}
+
+                                
+                                <div class="form-group mb-4">
+                                    <label for="password">Your Price</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="{{ pricing.price }}" class="form-control" disabled>
+                                        {% if pricing.saving %}
+                                        <label>Saving {{ pricing.saving }}</label>
+                                        {% endif %}
+                                    </div>  
+                                </div>
+
+                                {% csrf_token %}
+                                <!-- Form -->
+                                {% for field in form %}
+                                    <div>
+                                        {{field.errors}}
+                                        {{field.label_tag}} 
+                                        {{field}}
+                                    </div>
+                                {% endfor %}
+                                <button type="submit" class="btn btn-block btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </br>
+    {% endblock %}

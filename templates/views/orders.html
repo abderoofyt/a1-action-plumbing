@@ -1,0 +1,36 @@
+{% extends "basecopy.html" %}
+
+{% block content %}
+
+<section id="about">
+  <div class="container">
+      <div class="section-header">
+          <h2 class="section-title wow fadeInDown">Orders</h2>
+          {% if dataset %}
+            {% for data in dataset %}
+            <div class="wow fadeInDown">
+              <h2 class="wow fadeInDown"><a href="{% url "orders_complete" data.id %}"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal">
+                
+                {% if data.name %}
+                </a></i>{{ data.name }}</a></h2>
+                {% endif %}
+
+                {% if data.title %}
+                </a></i>{{ data.title }}</h2>
+                {% endif %}
+                
+                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>
+                  <span class="w3-tag w3-teal w3-round">{{ data.amount }} - R{{ data.price }}</span></h6>
+                <h7>{{data.contact_info}}</h7>
+                <h7>{{data.message}}</h7>
+                <hr>
+            </div>
+            {% endfor %}
+          {% else %}
+          <h3>No Orders</h3>
+          {% endif %}
+      </div>
+  </div>
+</section><!--/#about-->
+
+{% endblock %}

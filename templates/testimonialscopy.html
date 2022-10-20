@@ -1,0 +1,36 @@
+<section class="testimonial-area" id="testimonial">
+  <div class="container">
+  <div class="section-header">
+       <h2 class="section-title wow fadeInDown">{{nav.nav}}</h2>
+       <p class="wow fadeInDown">{{nav.details}}</p>
+   </div>
+  <div class="row">
+  
+  {% for item in testimonial %}
+  <div class="col-md-4">
+   <div class="single-testimonial animate_fade_in" style="opacity: 1; right: 0px;">
+     <div class="row">
+       <div class="col-xs-12">
+         <blockquote>{{item.quote}}</blockquote>
+       </div>
+     </div>
+     <div class="row">
+       {% if item.photo %}
+       <div class="col-xs-3">
+         <img src="{{item.photo.url}}" alt="client">
+       </div>
+       {% endif %}
+       <div class="col-xs-9 half-gutter">
+         <h5>{{item.person}}</h5>
+         {% if item.title %}
+         <h6>{{item.title}}</h6>
+         {% endif %}
+       </div>
+     </div>
+   </div>
+  </div>
+  {% endfor %}
+
+  </div>
+  </div>
+</section>

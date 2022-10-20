@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="webthemez">
+    <title>{{ data.slug }}</title>
+	<!-- core CSS -->
+    <link href="/templates/assetscopy/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/assetscopy/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/templates/assetscopy/css/animate.min.css" rel="stylesheet"> 
+    <link href="/templates/assetscopy/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/templates/assetscopy/css/styles.css" rel="stylesheet"> 
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="{{ data.favicon.url }}"> 
+</head> 
+
+<body id="home">
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {% if data.logo %}
+                        <a class="navbar-brand" href="#"><img src="{{data.logo.url}}" alt="logo"></a>
+                    {% else %}
+                        <a class="navbar-brand"><h3>{{data.slug}}</h3></a>
+                    {% endif %}
+                    
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="scroll active"><a href="{% url "home" %}">Home</a></li>  
+                    
+                        {% if user.is_authenticated %}
+                            <li class="scroll"><a href="{% url "orders" %}">Orders!</a></li>
+                        {% endif %}
+
+                        {% for nav in navbar %}
+                        <li class="scroll"><a href="#{{nav.category}}">{{nav.nav}}</a></li>  
+                        {% endfor %} 
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+
+    {% block content %}
+    {% endblock %}
+    
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; {{data.year}} Created by <a target="_blank" href="#" title="Updatable Websites">Abderoof</a>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="social-icons">
+                        {% for social in socials %}
+                        <li><a href="{{social.link}}"><i class="fa fa-{{social.icon}}"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="/templates/assetscopy/js/jquery.js"></script>
+    <script src="/templates/assetscopy/js/bootstrap.min.js"></script> 
+    <script src="/templates/assetscopy/js/mousescroll.js"></script>
+    <script src="/templates/assetscopy/js/smoothscroll.js"></script>
+    <script src="/templates/assetscopy/js/jquery.prettyPhoto.js"></script>
+    <script src="/templates/assetscopy/js/jquery.isotope.min.js"></script>
+    <script src="/templates/assetscopy/js/jquery.inview.min.js"></script>
+    <script src="/templates/assetscopy/js/wow.min.js"></script>
+    <script src="/templates/assetscopy/js/custom-scripts.js"></script>
+
+    <script src="/templates/assets/js/modernizr-latest.js"></script>
+    <script src="/templates/assets/js/jquery.min.js"></script>
+    <script src="/templates/assets/js/bootstrap.min.js"></script>
+	<script src="/templates/assets/js/jquery.cslider.js"></script>
+    <script src="/templates/assets/js/isotope.pkgd.min.js"></script>
+	<script src="/templates/assets/js/jquery.fancybox.pack.js"></script>  
+	<script src="/templates/assets/js/jquery.fancybox-media.js"></script>  
+    <script src="/templates/assets/js/imagesloaded.min.js"></script>
+    <script src="/templates/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/templates/assets/js/jquery.nav.min.js"></script>
+    <script src="/templates/assets/js/jquery.appear.min.js"></script>
+    <script src="/templates/assets/js/twitterFetcher.min.js"></script>
+    <script src="/templates/assets/js/script.js"></script> 
+
+</body>
+</html>

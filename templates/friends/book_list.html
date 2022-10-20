@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block search%}
+{% include 'search.html' %}
+{% endblock %}
+
+{% block filters %}
+{% include 'filters.html'%}
+{% endblock %}
+
+{% block Sidebar%}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="w3-container w3-card w3-white w3-margin-bottom">
+<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal">
+<div class="w3-container">
+  <ul class="all user">
+    {%  for user in allusers %}
+     {% if not user.is_superuser %}
+      {% if user not in request.user.friends.all and user != request.user %}
+        <h1> {{ user }} <a href="/send_friend_request/{{user.id}}/">Send Friend Request</a></h1>
+      {% endif %}
+     {% endif %}
+    {% endfor %}
+  <hr>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% block Pagination%}
+{% include 'pagination.html' %}
+{% endblock %}

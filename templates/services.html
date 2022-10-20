@@ -1,0 +1,30 @@
+<section id="{{nav.category}}" >
+    <div class="container">
+    
+     <div class="section-header">
+         <h2 class="section-title wow fadeInDown">{{data.services}}</h2>
+         <p class="wow fadeInDown">{{data.services_details}}</p>
+     </div>
+    
+     <div class="row">
+         <div class="features">
+            {% for item in service %}
+             <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">
+                 <div class="media service-box">
+                     <div class="pull-left">
+                         <i class="fa fa-{{item.icon}}"></i>
+                     </div>
+                     <div class="media-body">
+                         <h4 class="media-heading">{{item.services}}</h4>
+                         {% if item.details %}
+                            <p>{{item.details}}</p>
+                        {% endif %}
+                     </div>
+                 </div>
+             </div><!--/.col-md-4-->
+            {% endfor %} 
+    
+         </div>
+     </div><!--/.row-->    
+    </div><!--/.container-->
+</section><!--/#services-->
