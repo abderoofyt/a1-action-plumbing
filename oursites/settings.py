@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 
 import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,8 +28,7 @@ EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 SECRET_KEY = 'django-insecure-#uefw)1n^7wjiy8hus#11mg&8luh@6407vb4!n0ylnri5+wh+m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
-DEVEL = config('DEVEL', default=True, cast=bool)
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'a1-action-plumbing.herokuapp.com']
 
