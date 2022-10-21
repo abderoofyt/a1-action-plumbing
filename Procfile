@@ -1,1 +1,1 @@
-web: gunicorn a1-action-plumbing.wsgi
+web:gunicorn a1plumbing.wsgi
