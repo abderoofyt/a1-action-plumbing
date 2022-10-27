@@ -9,7 +9,7 @@ from .forms import GeeksForm
 
 
 def home(request):
-    context = {"data": Profile.objects.get(id=1), "filters": Filter.objects.all(), 
+    context = {"data": Profile.objects.filter(user=1), "filters": Filter.objects.all(), 
     "service": Service.objects.all(), "gallery": Gallery.objects.all(),
     "socials": Social.objects.filter(user=1), "pricing": Pricing.objects.all(),
     "navbar": Navbar.objects.filter(user=1), "counter": Counter.objects.all(),
