@@ -277,7 +277,6 @@ background: #FFF;
 #hero-banner{
   overflow: hidden;
   height: 700px;
-  background: url('../images/banner/banner.jpg');
   background-size:cover;
   color:#fff;
 }
@@ -616,9 +615,7 @@ margin: 0 8px;
 }
 #about {
   padding: 100px 0;
-  /* background: #07080A; */
-  /* background: url('../images/img2.jpg'); */    
-  /* background-size: cover; */  };
+  background-size: cover;
 }
 #about .column-title{
 color:#fff;
@@ -1001,7 +998,6 @@ width: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
   color: #fff;
-  background: #3B8838;
 }
 #footer a {
   color: #fff;

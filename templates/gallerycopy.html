@@ -1,51 +1,40 @@
-<section id="{{nav.category}}">
-  <div class="container">
-   <div class="section-header">
-       <h2 class="section-title wow fadeInDown">{{nav.nav}}</h2>
-       <p class="wow fadeInDown">{{nav.details}}</p>
-   </div>
+  <div class="text-center">
+      <ul class="portfolio-filter" style="display:none">
+        {% for filter in filters %}
+        <li>
+          <a data-filter=".{{filter.name}}" href="#">{{filter.name}}</a>
+        </li>
+        {% endfor %}
+      </ul><!--/#portfolio-filter-->
+  </div>
   
-   
-   <div class="text-center">
-       <ul class="portfolio-filter" style="display:none">
-          {% for filter in filters %}
-          <li>
-            <a data-filter=".{{filter.name}}" href="#">{{filter.name}}</a>
-          </li>
-          {% endfor %}
-       </ul><!--/#portfolio-filter-->
-   </div>
-   <ul class="filters list-inline">
-    <li>
-      <a class="active" data-filter="*" href="#">All</a>
-    </li>
-    {% for filter in filters %}
-    <li>
-      <a data-filter=".{{filter.name}}" href="#">{{filter.name}}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  
-  <ul class="items list-unstyled clearfix animated hiding" data-animation="fadeInRight">
-    {% for item in gallery %}
-    {% if item.nav == nav.nav %}
-    <li class="item {{item.filter}}">
-        <div class="portfolio-items">
-            <div class="portfolio-item designing">
-                <div class="portfolio-item-inner">
-                    <img class="img-responsive" src="{{item.photo.url}}" alt="{{item.alt}}">
-                    <div class="portfolio-info"> 
-                        <a class="preview" href="{{item.photo.url}}" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                    </div>
-                </div>
-            </div><!--/.portfolio-item-->
-        </div>
-    </li>
-    {% endif %}
-    {% endfor %}
-  </ul>
-   
-  </div><!--/.container-->
-  </section><!--/#portfolio-->
+<ul class="filters list-inline">
+  <li>
+    <a class="active" data-filter="*" href="#">All</a>
+  </li>
+  {% for filter in filters %}
+  <li>
+    <a data-filter=".{{filter.name}}" href="#">{{filter.name}}</a>
+  </li>
+  {% endfor %}
+</ul>
 
+<ul class="items list-unstyled clearfix animated hiding" data-animation="fadeInRight">
+  {% for item in gallery %}
+  {% if item.nav == nav.nav %}
+  <li class="item {{item.filter}}">
+      <div class="portfolio-items">
+          <div class="portfolio-item designing">
+              <div class="portfolio-item-inner">
+                  <img class="img-responsive" src="{{item.photo.url}}" alt="{{item.alt}}">
+                  <div class="portfolio-info"> 
+                      <a class="preview" href="{{item.photo.url}}" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                  </div>
+              </div>
+          </div><!--/.portfolio-item-->
+      </div>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
   

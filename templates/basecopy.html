@@ -21,13 +21,124 @@
 	{% if data.favicon %}
     <link rel="shortcut icon" href="/templates/assetscopy/images/ico/favicon.ico">
 	{% endif %}
+    <style>
+        .polaroid p{
+            text-align: center;
+            padding: 10px 20px;
+            background: white;
+        }
+        .over {
+          position: relative;
+          width: 50%;
+        }
+        .over:hover .slide.up {
+            height: 100%;
+        }
+        .over:hover .slide.down {
+            height: 100%;
+            bottom: 0; 
+        }
+
+        .over:hover .slide.right {
+            width: 100%;
+        }
+        .over:hover .slide.left {
+            width: 100%;
+            left: 0;
+        }
+        .slide {
+            position: absolute;
+            right: 0;
+            background-color: #008CBA;
+            overflow: hidden;
+            transition: .5s ease;
+        }
+        .slide.right, .slide.left {
+            bottom: 0;
+            width: 0;
+            height: 100%;
+        }
+        .slide.left {
+            left: 100%;
+        }
+        .slide.right {
+            left: 0;
+        }
+
+        .slide.down, .slide.up {
+            width: 100%;
+            height: 0;
+        }
+
+        .slide.down {
+            bottom: 100%;
+        }
+        .slide.up{
+            bottom: 0;
+        }
+        .over:hover .overlay {
+          opacity: 1;
+        }
+        .over:hover .middle {
+            opacity: 1;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+            
+            /* middle */
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          width: 100%;
+          opacity: 0;
+          transition: .5s ease;
+          background-color: #008CBA;
+        }
+        .overlay p, .slide.up p, .slide.down p, .slide.right p, .slide.left p {
+          color: white;
+          font-size: 20px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+        }
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%)
+        }
+        .middle p {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+        </style>
 </head> 
+
 
 <body id="home">
     <header id="header">
-        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
-            <div class="container">
-                <div class="navbar-header">
+        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner" style="background: green">
+            <div class="container" >
+                <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -43,7 +154,7 @@
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" >
                         <li class="scroll active"><a href="{% url "home" %}">Home</a></li>  
                     
                         {% if user.is_authenticated %}
@@ -62,11 +173,11 @@
     {% block content %}
     {% endblock %}
     
-    <footer id="footer">
-        <div class="container">
+    <footer id="footer" style="background: #3B8838;">
+        <div class="container" >
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; {{data.year}} Created by <a target="_blank" href="#" title="Updatable Websites">Abderoof</a>
+                    &copy; {% if data.year %}{{data.year}}{% endif %} Created by <a target="_blank" href="#" title="Updatable Websites">Abderoof</a>
                 </div>
                 <div class="col-sm-6">
                     <ul class="social-icons">
