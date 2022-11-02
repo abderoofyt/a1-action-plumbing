@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
 from django.conf import settings
-from posts.models import Post
 
 from users.filters import ProfileFilter
 

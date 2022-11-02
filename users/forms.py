@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from users.models import Pricing, Profile, Order
+from users.models import Profile, Order
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -9,7 +9,6 @@ class LoginForm(forms.Form):
 
 
 class OrderForm(forms.ModelForm):
-
     class Meta:
         model = Order
         fields = ('amount', 'contact_info', 'message')

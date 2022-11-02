@@ -44,9 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
 
-    'posts',
     'home',
+    
+    'firsts',
+    'navbars',
+
     'users',
+    'styling',
 
 ]
 
