@@ -38,3 +38,31 @@ class ImageFilter(models.Model):
     animation = models.TextField(choices=Choices, null=True, blank=True)
     value = models.CharField(max_length=30, null=True, blank=True, )
 
+
+class Header(models.Model):
+    header_color = models.CharField(max_length=20, null=True, blank=True)
+    header_hover_color = models.CharField(max_length=20, null=True, blank=True)
+
+    text_color = models.CharField(max_length=20, null=True, blank=True)
+    text_hover_color = models.CharField(max_length=20, null=True, blank=True)
+    
+    header_style = models.CharField(max_length=20, null=True, blank=True)
+    header_animation = models.CharField(max_length=20, null=True, blank=True)
+
+class Nav(models.Model):
+    color = models.CharField(max_length=20, null=True, blank=True)
+    bg_color = models.CharField(max_length=20, null=True, blank=True)
+    hover_color = models.CharField(max_length=20, null=True, blank=True)
+    hover_bg_color = models.CharField(max_length=20, null=True, blank=True)
+
+    direction = models.CharField(max_length=20, null=True, blank=True)
+    style = models.CharField(max_length=20, null=True, blank=True)
+
+class Footer(models.Model):
+    color = models.CharField(max_length=20, null=True, blank=True)
+    bg_color = models.CharField(max_length=20, null=True, blank=True)
+    link_color = models.CharField(max_length=20, null=True, blank=True)
+    link_hover_color = models.CharField(max_length=20, null=True, blank=True)
+
+    direction = models.CharField(max_length=20, null=True, blank=True)
+    style = models.CharField(max_length=20, null=True, blank=True)

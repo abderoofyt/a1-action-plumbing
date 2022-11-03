@@ -6,9 +6,7 @@ class Navbar(models.Model):
     Choices = [
         ("pricing", "Pricing"),
         ("services", "services"),
-        ("services2", "services2"),
         ("portfolio", "gallery"),
-        ("portfolio2", "gallery2"),
         ("About", "About"),
         ("team", "team"),
         ("testimonial", "testimonial"),

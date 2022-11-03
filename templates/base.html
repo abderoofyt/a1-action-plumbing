@@ -1,128 +1,104 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta charset="UTF-8">
+{% for data in data %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="WebThemez">
-    <link rel="shortcut icon" href="">
-    <title> {{ data.slug }} </title>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600">
-    <link rel="stylesheet" href="/templates/assets/css/bootstrap.min.css">
-    <!-- FancyBox -->
-	<link href="/templates/assets/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-    <link rel="stylesheet" href="/templates/assets/css/style.css"> 
-    <link rel="stylesheet" href="/templates/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/templates/assets/css/font-awesome.min.css">
+    <meta name="author" content="webthemez">
+    <title>{{ data.slug }}</title>
+	<!-- core CSS -->
+    <link href="/templates/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/templates/assets/css/animate.min.css" rel="stylesheet"> 
+    <link href="/templates/assets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/templates/assets/css/styles.css" rel="stylesheet"> 
     <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body> 
-          <div id="navbar-top">
-      <nav class="navbar navbar-default navbar-static" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand nav-external" href="#home"><strong>{{ data.slug }}</strong></a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <a href="#home">Home</a>
-              </li>
-              <li>
-                <a href="#services">Services</a>
-              </li>
-              <li>
-                <a href="#work">Works</a>
-              </li>
-              <li>
-                <a href="#clients">Clients</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->   
+	{% if data.favicon %}
+    <link rel="shortcut icon" href="/templates/assetscopy/images/ico/favicon.ico">
+	{% endif %}
+    <style>
+    </style>
+</head> 
+
+
+<body id="home">
+    {% for nav in nav %}
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner" 
+            style="color: {{nav.color}}; background: {{nav.bg_color}};">
+            <div class="container" >
+                <div class="navbar-header" >
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {% if data.logo %}
+                        <a class="navbar-brand" href="#"><img src="{{data.logo.url}}" alt="logo"></a>
+                    {% else %}
+                        <a class="navbar-brand"><h3>{{data.slug}}</h3></a>
+                    {% endif %}
+                    
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav" >
+                        <li class="scroll active"><a href="{% url "home" %}">Home</a></li>  
+                    
+                        {% if user.is_authenticated %}
+                            <li class="scroll"><a href="{% url "orders" %}">Orders!</a></li>
+                        {% endif %}
+
+                        {% for navbar in navbar %}
+                        <li class="scroll"><a href="#{{nav.category}}">{{navbar.nav}}</a></li>  
+                        {% endfor %} 
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+    {% endfor %}
 
     {% block content %}
     {% endblock %}
-
-
-    <footer id="footer">
-      <div class="container"> 
-        <div class="row">
-          <div class="col-lg-12 animated hiding" data-animation="fadeInUp">
-            <ul class="social list-inline ">
-              <li>
-                <a class="facebook" href="http://www.facebook.com" title="Facebook">
-                  <i class="fa fa-facebook fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a class="twitter" href="http://www.twitter.com" title="Twitter">
-                  <i class="fa fa-twitter fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a class="google-plus" href="http://www.plus.google.com" title="Google+">
-                  <i class="fa fa-google-plus fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a class="dribbble" href="http://www.linkedin.com" title="Dribbble">
-                  <i class="fa fa-dribbble fa-2x"></i>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright"> 
-              Template by <a href="http://www.webthemez.com">WebThemez</a> &middot; 
-              Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a> &middot; 
-              Based on <a href="http://getbootstrap.com/">Bootstrap</a>  &middot; 
-              Icons by <a href="http://fontawesome.io/">Font Awesome</a> &middot;  
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="/templates/assets/js/modernizr-latest.js"></script>
-    <script src="/templates/assets/js/jquery.min.js"></script>
-    <script src="/templates/assets/js/bootstrap.min.js"></script>
-	  <script src="/templates/assets/js/jquery.cslider.js"></script>
-    <script src="/templates/assets/js/isotope.pkgd.min.js"></script>
-	  <script src="/templates/assets/js/jquery.fancybox.pack.js"></script>  
-	  <script src="/templates/assets/js/jquery.fancybox-media.js"></script>  
-    <script src="/templates/assets/js/imagesloaded.min.js"></script>
-    <script src="/templates/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="/templates/assets/js/jquery.nav.min.js"></script>
-    <script src="/templates/assets/js/jquery.appear.min.js"></script>
-    <script src="/templates/assets/js/twitterFetcher.min.js"></script>
-    <script src="/templates/assets/js/script.js"></script> 
-	
-    <script type="text/javascript">
-    $(document).ready(function () {
-		$('#da-slider').cslider({
-			autoplay: true,
-			bgincrement: 0
-		});
-    });
-    </script>
     
-  </body>
+    {% for footer in footer %}
+    <footer id="footer" style="color: {{footer.color}}; background: {{footer.bg_color}}">
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; {% if data.year %}{{data.year}}{% endif %} Created by 
+                        <a style="color: {{footer.link_color}}" onMouseOver="this.style.color='{{footer.link_hover_color}}'"onMouseOut="this.style.color='{{footer.link_color}}'"
+                        target="_blank" href="#" title="Updatable Websites">Abderoof</a>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="social-icons">
+                        {% for social in socials %}
+                        <li><a style="color: {{footer.link_color}}" onMouseOver="this.style.color='{{footer.link_hover_color}}'"onMouseOut="this.style.color='{{footer.link_color}}'"
+                            href="{{social.link}}"><i class="fa fa-{{social.icon}}"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    {% endfor %}
+
+    <script src="/templates/assets/js/jquery.js"></script>
+    <script src="/templates/assets/js/bootstrap.min.js"></script> 
+    <script src="/templates/assets/js/mousescroll.js"></script>
+    <script src="/templates/assets/js/smoothscroll.js"></script>
+    <script src="/templates/assets/js/jquery.prettyPhoto.js"></script>
+    <script src="/templates/assets/js/jquery.isotope.min.js"></script>
+    <script src="/templates/assets/js/jquery.inview.min.js"></script>
+    <script src="/templates/assets/js/wow.min.js"></script>
+    <script src="/templates/assets/js/custom-scripts.js"></script>
+    
+</body>
 </html>
+{% endfor %}

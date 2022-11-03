@@ -57,9 +57,9 @@ class Order(models.Model):
     item_quantity = models.CharField(max_length=10, null=True, blank=True)
     item_name = models.CharField(max_length=30, null=True, blank=True)
 
-    amount = models.IntegerField(default=1, null=True, blank=True)
-    contact_info = models.CharField(max_length=30, null=True, blank=True)
-    message = models.CharField(max_length=30, null=True, blank=True)
+    amount = models.IntegerField(default=1)
+    contact_info = models.CharField(max_length=30)
+    message = models.CharField(max_length=30)
 
     def __str__(self):
         if self.name:
