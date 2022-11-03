@@ -1,7 +1,7 @@
 <div class="row">
     <div class="features">
     {% for item in service %}
-        {% if item.nav|slugify == nav.nav|slugify %}
+        {% if item.navbar|slugify == nav.nav|slugify %}
         <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">
             <div class="media service-box">
                 <div class="pull-left">

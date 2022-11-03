@@ -21,7 +21,7 @@
 
 <ul class="items list-unstyled clearfix animated hiding" data-animation="fadeInRight">
   {% for item in gallery %}
-  {% if item.nav|slugify == nav.nav|slugify %}
+  {% if item.navbar|slugify == nav.nav|slugify %}
   <li class="item {{item.filter}}">
       <div class="portfolio-items">
           <div class="portfolio-item designing">
