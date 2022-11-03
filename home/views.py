@@ -4,13 +4,9 @@ from django.shortcuts import redirect, render, get_object_or_404
 from users.forms import OrderForm
 
 from users.models import Filter, Order, Profile, Social
-<<<<<<< HEAD
-from navbars.models import About, Gallery, Navbar, Pricing, Service, Counter, Testimonial
-from styling.models import ImageAnimation
-=======
-from navbars.models import Gallery, Service, Counter, Testimonial, Pricing
+from navbars.models import About, Gallery, Service, Counter, Testimonial, Pricing
 from firsts.models import Navbar
->>>>>>> b27dab80c583e3bbf1bbd251cacd9adc181b4d37
+from styling.models import ImageAnimation
 
 def home(request):
     context = {"data": Profile.objects.filter(user=1), "filters": Filter.objects.all(), 
