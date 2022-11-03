@@ -8,12 +8,14 @@
      
      <div class="row text-center">
         {% for item in counter %}
+        {% if item.nav|slugify == nav.nav|slugify %}
          <div class="col-md-3 col-sm-6 col-xs-12">
              <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="0ms">
                  <div class="business-stats" data-digit="{{item.number}}" data-duration="1000"></div>
                  <strong>{{item.name}}</strong>
              </div>
          </div>
+         {% endif %}
         {% endfor %}
      </div>
     </div>

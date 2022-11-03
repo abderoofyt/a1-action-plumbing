@@ -5,7 +5,6 @@ from users.models import Filter
 
 # Create your models here.
 class Service(models.Model):
-    nav = models.CharField(max_length=30, null=True, blank=True)
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     services = models.CharField(max_length=30)
     details = models.CharField(max_length=300, null=True, blank=True)
@@ -20,7 +19,6 @@ class About(models.Model):
 
 
 class Gallery(models.Model):
-    nav = models.CharField(max_length=30, null=True, blank=True)
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     alt = models.CharField(max_length=30)
     filter = models.ForeignKey(Filter, on_delete=models.CASCADE, null=True, blank=True)
@@ -30,7 +28,6 @@ class Gallery(models.Model):
         return self.alt
 
 class Testimonial(models.Model):
-    nav = models.CharField(max_length=30, null=True, blank=True)
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     person = models.CharField(max_length=30)
     quote = models.CharField(max_length=100)
@@ -42,7 +39,6 @@ class Testimonial(models.Model):
         return self.person
 
 class Counter(models.Model):
-    nav = models.CharField(max_length=30, null=True, blank=True)
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=30)
     number = models.IntegerField()
@@ -51,7 +47,6 @@ class Counter(models.Model):
         return self.name
 
 class Pricing(models.Model):
-    nav = models.CharField(max_length=30, null=True, blank=True)
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=20, null=True, blank=True)
     features = models.BooleanField()
