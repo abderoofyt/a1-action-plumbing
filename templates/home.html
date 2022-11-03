@@ -25,7 +25,7 @@ style="{% if nav.background_image %}background-image: url('{{ nav.background_ima
      <div class="section-header">
         {% for text in header %}
          <h2 class="section-title wow fadeInDown">
-            <span onMouseOver="this.style.color='{{text.header_hover_color}}'" 
+            <span style="color: {{text.header_color}}" onMouseOver="this.style.color='{{text.header_hover_color}}'" 
             onMouseOut="this.style.color='{{text.header_color}}'">{{nav.nav}}</span></h2>
          <p class="wow fadeInDown">
             <span onMouseOver="this.style.color='{{text.text_hover_color}}'" 

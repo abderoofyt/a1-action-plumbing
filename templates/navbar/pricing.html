@@ -1,42 +1,25 @@
 {% for item in pricing %}
 {% if item.navbar|slugify == nav.nav|slugify %}
-<div class="row">
 <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="wow zoomIn" data-wow-duration="400ms" data-wow-delay="{{item.id}}00ms">
-            <ul class="pricing {% if item.featured %}featured{% endif %}">
-            {% if item.title and item.name %}
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading {% if item.features %}featured{% endif %}"><h3>{{item.title}}</h3></div>
-                </div>
-                <li class="plan-header2">
-                    <div class="price-duration2">
-            {% elif item.title %}
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading {% if item.features %}featured{% endif %}"><h3>{{item.title}}</h3></div>
-                </div>
-                <li class="plan-header3">
-                    <div class="price-duration3">
-            {% elif item.name %}
-                <li class="plan-header4">
-                    <div class="price-duration4">
-            {% else %}
-                <li class="plan-header">
-                    <div class="price-duration">
-            {% endif %}
+    <div class="wow zoomIn" data-wow-duration="400ms" data-wow-delay="600ms">
+        <ul class="pricing">
+            <li class="plan-header">
+                <div class="price-duration">
                     <span class="price">R {{item.price}}<span class="price-cents">99</span></span>
                     <span class="duration">{{item.payment}}</span>
                     {% if item.name %}
                         <div class="plan-name">{{item.name}}</div>
+                    {% elif item.title %}
+                        <div class="plan-name">{{item.title}}</div> 
                     {% endif %}
-                    </div>
-                </li>
-                <li><strong>1</strong> {{item.item_name}}</li>
-                <li><strong>{{item.item_amount}}</strong> {{item.item_quantity}}</li>
-                <li><strong>Saving </strong>{{item.saving}}</li>
-                <li><strong>24/7</strong> SUPPORT</li>
-                <li class="plan-purchase"><a class="btn btn-primary" href="{% url 'pricing_detail_view' item.id %}">Get It Now!</a></li>
-            </ul>
-        </div>
+                </div>
+            </li>
+            <li><strong>1</strong> {{item.item_name}}</li>
+            <li><strong>{{item.item_amount}}</strong> {{item.item_quantity}}</li>
+            <li><strong>Saving </strong>{{item.saving}}</li>
+            <li><strong>24/7</strong> SUPPORT</li>
+            <li class="plan-purchase"><a class="btn btn-primary" href="{% url 'pricing_detail_view' item.id %}">Get It Now!</a></li>
+        </ul>
     </div>
 </div>
 {% endif %}

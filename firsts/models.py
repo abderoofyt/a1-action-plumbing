@@ -4,7 +4,7 @@ from users.models import Profile
 # Create your models here.
 class Navbar(models.Model):
     Choices = [
-        ("pricing", "Pricing"),
+        ("pricing", "pricing"),
         ("services", "services"),
         ("portfolio", "gallery"),
         ("About", "About"),
