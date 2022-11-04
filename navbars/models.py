@@ -10,9 +10,6 @@ class Service(models.Model):
     details = models.CharField(max_length=300, null=True, blank=True)
     icon = models.CharField(max_length=30, null=True, blank=True)
 
-    def __str__(self):
-        return self.services
-
 class About(models.Model):
     background = models.CharField(max_length=30)
     background_image = models.ImageField(upload_to="photo/", null=True, blank=True)
@@ -34,7 +31,6 @@ class Testimonial(models.Model):
     photo = models.ImageField(upload_to="photo/", null=True, blank=True)
     title = models.CharField(max_length=30, null=True, blank=True)
 
-
     def __str__(self):
         return self.person
 
@@ -47,6 +43,14 @@ class Counter(models.Model):
         return self.name
 
 class Pricing(models.Model):
+    Choices = [
+        ("cash", "cash/card"),
+        ("oo", "one off"),
+        ("w", "weekly"),
+        ("o3m", "over 3 months"),
+        ("o6m", "over 6 months"),
+        ("ay", "over a year"),
+    ]
     navbar = models.ForeignKey(Navbar, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=20, null=True, blank=True)
     features = models.BooleanField()
@@ -54,16 +58,9 @@ class Pricing(models.Model):
     featured = models.BooleanField()
     price = models.CharField(max_length=20)
     saving = models.CharField(max_length=20, null=True, blank=True)
-    payment = models.CharField(max_length=20, null=True, blank=True)
+
+    payment_style = models.TextField(choices=Choices)
 
     item_amount = models.IntegerField(null=True, blank=True)
     item_quantity = models.CharField(max_length=10, null=True, blank=True)
     item_name = models.CharField(max_length=30, null=True, blank=True)
-
-    def __str__(self):
-        if self.name:
-            return self.name
-        elif self.title:
-            return self.title
-        else:
-            return self.price

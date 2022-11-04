@@ -8,15 +8,21 @@ from navbars.models import About, Gallery, Service, Counter, Testimonial, Pricin
 from firsts.models import Navbar
 from styling.models import ImageAnimation, Footer, Nav, Header
 
-def home(request):
-    context = {"data": Profile.objects.filter(user=1), "filters": Filter.objects.all(), 
+def contextF(myid):
+    context= {"data": Profile.objects.filter(user=1), "filters": Filter.objects.all(), 
     "service": Service.objects.all(), "gallery": Gallery.objects.all(),
-    "socials": Social.objects.filter(user=1), "pricing": Pricing.objects.all(),
-    "navbar": Navbar.objects.filter(user=1).order_by('order'), "counter": Counter.objects.all(),
+    "socials": Social.objects.filter(user=myid), "pricing": Pricing.objects.all(),
+    "navbar": Navbar.objects.filter(user=myid).order_by('order'), "counter": Counter.objects.all(),
     "testimonial": Testimonial.objects.all(), "about": About.objects.all(), "ia": ImageAnimation.objects.all(),
-    "footer": Footer.objects.filter(id=1), "nav": Nav.objects.filter(id=1), "header": Header.objects.filter(id=1)
+    "footer": Footer.objects.filter(id=myid), "nav": Nav.objects.filter(id=myid), "header": Header.objects.filter(id=myid)
     }    
-    return render(request, "home.html", context)
+    return context
+
+def home(request):
+    return render(request, "home.html", contextF(1))
+
+def demo(request):
+    return render(request, "home.html", contextF(2))
 
 def pricing_detail_view(request, id):
     context = {
