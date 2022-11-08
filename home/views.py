@@ -9,12 +9,12 @@ from firsts.models import Navbar
 from styling.models import ImageAnimation, Footer, Nav, Header
 
 def contextF(myid):
-    context= {"data": Profile.objects.filter(user=1), "filters": Filter.objects.all(), 
-    "service": Service.objects.all(), "gallery": Gallery.objects.all(),
-    "socials": Social.objects.filter(user=myid), "pricing": Pricing.objects.all(),
-    "navbar": Navbar.objects.filter(user=myid).order_by('order'), "counter": Counter.objects.all(),
-    "testimonial": Testimonial.objects.all(), "about": About.objects.all(), "ia": ImageAnimation.objects.all(),
-    "footer": Footer.objects.filter(id=myid), "nav": Nav.objects.filter(id=myid), "header": Header.objects.filter(id=myid)
+    context= {"data": Profile.objects.filter(user=myid), "filters": Filter.objects.filter(user=myid), 
+    "service": Service.objects.filter(user=myid), "gallery": Gallery.objects.filter(user=myid),
+    "socials": Social.objects.filter(user=myid), "pricing": Pricing.objects.filter(user=myid),
+    "navbar": Navbar.objects.filter(user=myid).order_by('order'), "counter": Counter.objects.filter(user=myid),
+    "testimonial": Testimonial.objects.filter(user=myid), "about": About.objects.filter(user=myid), "ia": ImageAnimation.objects.filter(user=myid),
+    "footer": Footer.objects.filter(user=myid), "nav": Nav.objects.filter(user=myid), "header": Header.objects.filter(user=myid)
     }    
     return context
 

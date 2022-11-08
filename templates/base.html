@@ -22,6 +22,31 @@
     <link rel="shortcut icon" href="/templates/assetscopy/images/ico/favicon.ico">
 	{% endif %}
     <style>
+.fixed {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.sticky {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+}
+
+.sticky.top {
+    top: 0;
+}
+.sticky.bottom {
+    bottom: 0;
+}
+
     </style>
 </head> 
 
@@ -29,7 +54,7 @@
 <body id="home">
     {% for nav in nav %}
     <header id="header">
-        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner" 
+        <nav id="main-nav" class="navbar navbar-default navbar-{{nav.direction}}" role="banner" 
             style="color: {{nav.color}}; background: {{nav.bg_color}};">
             <div class="container" >
                 <div class="navbar-header" >

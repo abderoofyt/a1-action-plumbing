@@ -12,7 +12,6 @@ class Profile(models.Model):
     #     ("red", "Red"),
     # ]
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
-    # temp = models.TextField(choices=Choices)
 
     slug = models.SlugField(max_length=200, db_index=True)
     motto = models.CharField(max_length=100, null=True, blank=True)
@@ -70,6 +69,7 @@ class Order(models.Model):
             return self.price
 
 class Icon(models.Model):
+    user = models.ManyToManyField(User)
     icon = models.CharField(max_length=30)
     icons = models.CharField(max_length=30)
     
@@ -80,12 +80,14 @@ class Icon(models.Model):
         return self.icon
 
 class Filter(models.Model):
+    user = models.ManyToManyField(User)
     name = models.CharField(max_length=10)
     
     def __str__(self):
         return self.name
 
 class Social(models.Model):
+    user = models.ManyToManyField(User)
     user = models.ForeignKey('Profile', on_delete=models.CASCADE, null=True, blank=True)
     link = models.CharField(max_length=300, null=True, blank=True)
     icon = models.CharField(max_length=30, null=True, blank=True)

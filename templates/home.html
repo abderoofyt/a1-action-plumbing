@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <section id="hero-banner" {% if data.header %}style='background-image: url("{{ data.header.url }}");'{% endif %}>
   <div class="banner-inner">
          <div class="container">
              <div class="row">
                  <div class="col-sm-12"> 
-                         <h2>{{ data.slug }}</h2>
-                         <p>{{ data.motto }}</p>
+                    {% for text in header %}
+                         <h2><span style="font-size: {{text.title_size}}px; -webkit-text-stroke: 1.5px black; color: {{text.title_color}}" onMouseOver="this.style.color='{{text.title_hover_color}}'" 
+                            onMouseOut="this.style.color='{{text.title_color}}'">{{ data.slug }}</span></h2>
+                         <p><span style="font-size: {{text.motto_size}}px; -webkit-text-stroke: 1px black; color: {{text.motto_color}}" onMouseOver="this.style.color='{{text.motto_hover_color}}'" 
+                            onMouseOut="this.style.color='{{text.motto_color}}'">{{ data.motto }}</span></p>
                          {% if data.button %}
                          <a class="btn btn-primary btn-lg" href="#{{data.destination}}">{{data.button}}</a>
                          {% endif %}
+                    {% endfor %}
                  </div>
              </div>
          </div>

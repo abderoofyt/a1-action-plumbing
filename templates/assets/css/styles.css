@@ -233,7 +233,6 @@ background: #FFF;
   #main-nav.navbar-default .navbar-nav > li.open > a,
   #main-nav.navbar-default .navbar-nav > li:hover > a {
     background: #3B8838; 
-	
     color: #FFFFFF;
   
 }

@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import Profile
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Navbar(models.Model):
@@ -7,13 +8,13 @@ class Navbar(models.Model):
         ("pricing", "pricing"),
         ("services", "services"),
         ("portfolio", "gallery"),
-        ("About", "About"),
+        ("about", "about"),
         ("team", "team"),
         ("testimonial", "testimonial"),
         ("contact", "contact"),
         ("counter", "counter"),
     ]
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True)
+    user = models.ManyToManyField(Profile, blank=True)
     category = models.TextField(choices=Choices, null=True, blank=True)
     
     order = models.IntegerField(null=True, blank=True, unique=True)
